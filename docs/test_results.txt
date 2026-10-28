@@ -1,0 +1,35 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.1.1, pluggy-1.7.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: early_warning_dashboard
+plugins: anyio-4.15.1
+collecting ... collected 26 items
+
+tests/test_app_end_to_end.py::test_wrong_password_shows_error_and_no_data PASSED [  3%]
+tests/test_app_end_to_end.py::test_core_journey_mark_top_student_reviewed PASSED [  7%]
+tests/test_app_end_to_end.py::test_second_advisor_sees_a_different_caseload PASSED [ 11%]
+tests/test_app_end_to_end.py::test_every_page_loads_without_errors PASSED [ 15%]
+tests/test_scoring.py::test_engaged_student_scores_zero_and_low PASSED   [ 19%]
+tests/test_scoring.py::test_every_indicator_fires_for_maximum_score PASSED [ 23%]
+tests/test_scoring.py::test_absence_is_graded_so_long_absences_rank_higher PASSED [ 26%]
+tests/test_scoring.py::test_absence_boundaries PASSED                    [ 30%]
+tests/test_scoring.py::test_login_boundaries PASSED                      [ 34%]
+tests/test_scoring.py::test_band_boundaries PASSED                       [ 38%]
+tests/test_scoring.py::test_late_submission_only_counts_from_three_days PASSED [ 42%]
+tests/test_scoring.py::test_csv_style_booleans_are_understood PASSED     [ 46%]
+tests/test_scoring.py::test_reason_lists_highest_points_first_with_points PASSED [ 50%]
+tests/test_scoring.py::test_tie_break_uses_absence_then_logins PASSED    [ 53%]
+tests/test_services.py::test_login_success_and_failure_is_logged_without_password PASSED [ 57%]
+tests/test_services.py::test_advisor_only_sees_own_caseload PASSED       [ 61%]
+tests/test_services.py::test_caseload_is_ranked_and_filtered PASSED      [ 65%]
+tests/test_services.py::test_review_is_saved_and_survives_restart PASSED [ 69%]
+tests/test_services.py::test_advisor_cannot_review_another_advisors_student PASSED [ 73%]
+tests/test_services.py::test_unknown_next_step_is_rejected PASSED        [ 76%]
+tests/test_services.py::test_undo_review PASSED                          [ 80%]
+tests/test_services.py::test_reviews_older_than_retention_period_are_deleted PASSED [ 84%]
+tests/test_services.py::test_valid_import_is_saved_and_scored PASSED     [ 88%]
+tests/test_services.py::test_import_with_post_checkpoint_column_is_rejected PASSED [ 92%]
+tests/test_services.py::test_import_with_bad_values_lists_every_problem PASSED [ 96%]
+tests/test_services.py::test_fairness_summary_has_group_sizes_and_two_attributes PASSED [100%]
+
+============================== 26 passed in 3.35s ==============================

@@ -1,0 +1,2 @@
+student_id,advisor_username,course,year_level,demographic_group,registration_days_before_start,canvas_logins_per_week,days_since_last_login,submitted_early_assessment,early_assessment_days_late,forum_posts_count,final_exam_mark
+STU-2004,advisor.a,STATS 108,1,Domestic,10,3,4,true,0,2,62

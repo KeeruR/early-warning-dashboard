@@ -1,0 +1,4 @@
+student_id,advisor_username,course,year_level,demographic_group,registration_days_before_start,canvas_logins_per_week,days_since_last_login,submitted_early_assessment,early_assessment_days_late,forum_posts_count
+STU-2005,advisor.a,STATS 108,1,Domestic,10,75,4,true,0,2
+STU-2006,advisor.b,MGMT 101,2,Domestic,10,3,4,true,0,2
+2007,advisor.a,MGMT 101,7,Local,10,3,4,maybe,0,2

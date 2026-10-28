@@ -1,0 +1,34 @@
+digraph ER {
+  rankdir=LR; nodesep=0.4;
+  node [shape=plaintext, fontname="Helvetica", fontsize=10];
+  edge [fontname="Helvetica", fontsize=9, arrowhead=crow, arrowtail=none, color="#555555"];
+  users [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4">
+   <tr><td bgcolor="#e8e8e8"><b>users</b></td></tr>
+   <tr><td align="left">PK username</td></tr><tr><td align="left">display_name</td></tr>
+   <tr><td align="left">role</td></tr><tr><td align="left">password_hash, salt</td></tr></table>>];
+  students [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4">
+   <tr><td bgcolor="#e8e8e8"><b>students</b></td></tr>
+   <tr><td align="left">PK student_id</td></tr><tr><td align="left">FK advisor_username</td></tr>
+   <tr><td align="left">course, year_level, demographic_group</td></tr>
+   <tr><td align="left">registration_days_before_start</td></tr>
+   <tr><td align="left">canvas_logins_per_week</td></tr><tr><td align="left">days_since_last_login</td></tr>
+   <tr><td align="left">submitted_early_assessment, early_assessment_days_late</td></tr>
+   <tr><td align="left">forum_posts_count, loaded_at</td></tr></table>>];
+  scores [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4">
+   <tr><td bgcolor="#e8e8e8"><b>priority_scores</b></td></tr>
+   <tr><td align="left">PK/FK student_id</td></tr><tr><td align="left">score, band</td></tr>
+   <tr><td align="left">reasons_json</td></tr><tr><td align="left">rule_version, scored_at</td></tr></table>>];
+  reviews [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4">
+   <tr><td bgcolor="#e8e8e8"><b>reviews</b></td></tr>
+   <tr><td align="left">PK review_id</td></tr><tr><td align="left">FK student_id</td></tr>
+   <tr><td align="left">FK advisor_username</td></tr><tr><td align="left">next_step, reviewed_at</td></tr>
+   <tr><td align="left">is_active</td></tr></table>>];
+  audit [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4">
+   <tr><td bgcolor="#e8e8e8"><b>audit_log</b></td></tr>
+   <tr><td align="left">PK log_id</td></tr><tr><td align="left">logged_at, username</td></tr>
+   <tr><td align="left">action, detail</td></tr></table>>];
+  users -> students [label="advises 1..*"];
+  students -> scores [label="has 1", arrowhead=tee];
+  students -> reviews [label="0..*"];
+  users -> reviews [label="records 0..*"];
+}

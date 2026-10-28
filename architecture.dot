@@ -1,0 +1,38 @@
+digraph G {
+  rankdir=LR; nodesep=0.5; ranksep=0.7;
+  node [shape=box, style="rounded", fontname="Helvetica", fontsize=11, color="#333333"];
+  edge [fontname="Helvetica", fontsize=9, color="#555555"];
+
+  user [label="Student advisor\n(browser)", shape=box, style="rounded,bold"];
+
+  subgraph cluster_fe { label="Frontend: app.py (Streamlit)"; fontname="Helvetica"; fontsize=11; style="dashed";
+    login [label="Login form"];
+    caseload [label="Caseload page\nfilters, ranked cards,\nnext step, Mark reviewed"];
+    fairness [label="Fairness page"];
+    importp [label="Import page\n(CSV upload)"];
+  }
+
+  subgraph cluster_be { label="Backend: backend/ (Python)"; fontname="Helvetica"; fontsize=11; style="dashed";
+    services [label="services.py\naccess control, queries,\nreviews, import validation,\nretention purge"];
+    auth [label="auth.py\nPBKDF2 password check"];
+    scoring [label="scoring.py\nrule engine:\nscore, band, reasons"];
+    config [label="config.py\nthresholds, points,\nretention, allowed fields"];
+    gen [label="data_generator.py\n140 synthetic students"];
+  }
+
+  db [label="SQLite: data/early_warning.db\nusers | students | priority_scores\nreviews | audit_log", shape=cylinder];
+
+  user -> login [label="username +\npassword"];
+  user -> caseload [label="filters, clicks"];
+  user -> importp [label="CSV file"];
+  login -> services; caseload -> services; fairness -> services; importp -> services;
+  services -> auth [label="verify"];
+  services -> scoring [label="student rows"];
+  scoring -> services [label="score, band,\nreasons"];
+  config -> scoring [style=dotted];
+  gen -> services [label="seed on\nfirst start", style=dotted];
+  services -> db [label="read / write"];
+  db -> services;
+  services -> caseload [label="ranked list,\nstatus"];
+  caseload -> user [label="priorities +\nreasons"];
+}
