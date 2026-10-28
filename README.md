@@ -211,7 +211,4 @@ over several weeks, hosting on a server.
 
 ## 7. AI use
 
-Generative AI (Claude, Anthropic) was used in developing this artefact,
-including generating and revising code, tests and documentation. See the
-AI-use declaration in the final report for what the team designed, changed,
-checked and tested.
+The team wrote the initial code. Generative AI (Claude, Anthropic) was then used to help write and revise parts of this artefact, including code, tests and documentation. The AI-use declaration in the final report sets out which parts the team designed, wrote, changed, checked and tested.
